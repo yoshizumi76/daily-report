@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
-import { fetchHistoryDate } from "./my-modules/fetchHistoryData";
+//import { fetchHistoryDate } from "./my-modules/fetchHistoryData";//
 import { submitData } from "./my-modules/submit-data-js";
 // import { submitData } from "./my-modules/submit-data-js";
 // ... 既存のコード ...
