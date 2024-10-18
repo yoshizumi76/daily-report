@@ -9,6 +9,6 @@ const querySnapshot = await getDocs(collection(db, "reports"));
 // データをテーブル表の形式に合わせてHTMLに挿入
 querySnapshot.forEach((doc) => {
     console.log('${doc.id} => ${doc.data()}');
-    tags += '<tr><td>${doc.data().data}</td><td>${doc.data().name}</td><td>${doc.data().work}</td><td>${doc.data()/comment}</td></tr>'
+    tags += `<tr><td>${doc.data().data}</td><td>${doc.data().name}</td><td>${doc.data().work}</td><td>${doc.data()/comment}</td></tr>`
 });
 document.getElementById("js-history").innerHTML = tags;

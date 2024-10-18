@@ -33,15 +33,15 @@ const fetchHistoryDate = async () => {
 
     // データをテーブリ表の形式に合わせてHTMLに挿入
     querySnapshot.forEach((doc) => {
-        console.log('${doc.id} => ${doc.date()}');
-        tags += '<tr><td>${doc.data().date}</td><td>${doc.data().comment}</td></tr>'
+        console.log(`${doc.id} => ${doc.date()}`);
+        tags += `<tr><td>${doc.data().date}</td><td>${doc.data().comment}</td></tr>`;
     });
-    document.getElementById("js-history").innterHTML = tags;
+    document.getElementById("js-history").innerHTML = tags;
   };
 
   //Cloud Firestoreから取得したデータを表示する
   if(document.getElementById("js-history")) {
-      fetchHistoryDate(getDocs, collection, db);
+      fetchHistoryDate();
     }
 
   // Cloud Firestoreにデータを送信する
@@ -55,7 +55,7 @@ const fetchHistoryDate = async () => {
         date: new Date(),
         name: formDate.get("name"),
         work: formDate.get("work"),
-        Comment: formData.get("comment")
+        comment: formDate.get("comment")
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
@@ -65,7 +65,6 @@ const fetchHistoryDate = async () => {
 
    // Cloud Firestoreにデータを送信する
    if(document.getElementById("js-form")) {
-      document.getElementById("js-form").addEventListener("submit", (e) =>  
-        submitDate(e, addDoc, collection, db));
-   };
+      document.getElementById("js-form").addEventListener("submit", submitDate);
+   }
     
