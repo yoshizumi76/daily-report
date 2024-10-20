@@ -1,9 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
-//import { fetchHistoryDate } from "./my-modules/fetchHistoryData";//
+import { fetchHistoryDate } from "./my-modules/fetch-history-data";
 import { submitData } from "./my-modules/submit-data-js";
-// import { submitData } from "./my-modules/submit-data-js";
+import { submitData } from "./my-modules/submit-data";
 // ... 既存のコード ...
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -33,7 +33,7 @@ const fetchHistoryDate = async () => {
 
     // データをテーブリ表の形式に合わせてHTMLに挿入
     querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.date()}`);
+        console.log(`${doc.id} => ${doc.data().date}`);
         tags += `<tr><td>${doc.data().date}</td><td>${doc.data().comment}</td></tr>`;
     });
     document.getElementById("js-history").innerHTML = tags;
